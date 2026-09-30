@@ -9,7 +9,11 @@
     var meta = document.querySelector('meta[name="clarity-project-id"]');
     var projectId = meta ? String(meta.content || '').trim() : '';
     if (!projectId) return;
-    (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,'clarity','script',projectId);
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window,document,'clarity','script',projectId);
   }
 
   function clarityEvent(name) {
@@ -32,6 +36,31 @@
       var input = form.elements[key];
       if (input) input.value = utms[key] || '';
     });
+  }
+
+  function loadDeferredPosters() {
+    var videos = Array.prototype.slice.call(document.querySelectorAll('video[data-poster]'));
+    if (!videos.length) return;
+    function loadPoster(video) {
+      var poster = video.getAttribute('data-poster');
+      if (poster && !video.getAttribute('poster')) {
+        video.setAttribute('poster', poster);
+        video.removeAttribute('data-poster');
+      }
+    }
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (entry.isIntersecting) {
+            loadPoster(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: '600px 0px' });
+      videos.forEach(function(video){ observer.observe(video); });
+    } else {
+      videos.forEach(loadPoster);
+    }
   }
 
   function openModal() {
@@ -63,27 +92,35 @@
     if (event.key === 'Escape' && modal && modal.getAttribute('aria-hidden') === 'false') closeModal();
   });
 
+  var testimonialVideoTracked = false;
   document.addEventListener('play', function (event) {
-    if (event.target && event.target.matches && event.target.matches('[data-testimonial-video]')) {
+    if (!testimonialVideoTracked && event.target && event.target.matches && event.target.matches('[data-testimonial-video]')) {
+      testimonialVideoTracked = true;
       clarityEvent('testimonial_video_play');
     }
   }, true);
 
   function bindForm(form, utms) {
     hydrateUtms(form, utms);
+
     form.addEventListener('submit', async function (event) {
       event.preventDefault();
       var status = form.querySelector('[data-form-status]');
       var button = form.querySelector('button[type="submit"]');
       if (!form.reportValidity()) return;
 
-      if (button) { button.disabled = true; button.dataset.originalText = button.textContent; button.textContent = 'ENVIANDO...'; }
+      if (button) {
+        button.disabled = true;
+        button.dataset.originalText = button.textContent;
+        button.textContent = 'ENVIANDO...';
+      }
       if (status) status.textContent = '';
 
       var data = new FormData(form);
       var payload = {
         nome: String(data.get('nome') || '').trim(),
         telefone: String(data.get('telefone') || '').trim(),
+        email: String(data.get('email') || '').trim(),
         utm_source: String(data.get('utm_source') || ''),
         utm_medium: String(data.get('utm_medium') || ''),
         utm_campaign: String(data.get('utm_campaign') || ''),
@@ -105,16 +142,26 @@
         clarityEvent('lead_submit_success');
         if (typeof window.fbq === 'function') window.fbq('track','Lead');
         if (status) status.textContent = 'Dados enviados. Abrindo o WhatsApp…';
-        setTimeout(function(){ window.location.assign(WHATSAPP_URL); }, 250);
+
+        setTimeout(function(){
+          window.location.assign(WHATSAPP_URL);
+        }, 250);
       } catch (error) {
         console.error('Erro no envio do formulário:', error);
         if (status) status.textContent = 'Não foi possível enviar seus dados agora. Tente novamente em alguns segundos.';
-        if (button) { button.disabled = false; button.textContent = button.dataset.originalText || 'QUERO RECEBER OS DETALHES'; }
+        if (button) {
+          button.disabled = false;
+          button.textContent = button.dataset.originalText || 'QUERO RECEBER OS DETALHES';
+        }
       }
     });
   }
 
   loadClarity();
+  loadDeferredPosters();
+
   var utms = readUtms();
-  document.querySelectorAll('[data-lead-form]').forEach(function(form){ bindForm(form, utms); });
+  document.querySelectorAll('[data-lead-form]').forEach(function(form){
+    bindForm(form, utms);
+  });
 })();
