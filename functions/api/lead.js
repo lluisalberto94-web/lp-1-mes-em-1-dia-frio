@@ -23,11 +23,16 @@ export async function onRequestPost(context) {
 
   const nome = clean(data?.nome, 160);
   const telefone = clean(data?.telefone, 80);
-  if (!nome || !telefone) return json({ ok: false, error: 'Nome e WhatsApp são obrigatórios' }, 400);
+  const email = clean(data?.email, 200);
+
+  if (!nome || !telefone || !email) {
+    return json({ ok: false, error: 'Nome, WhatsApp e e-mail são obrigatórios' }, 400);
+  }
 
   const crmPayload = {
     nome,
     telefone,
+    email,
     utm_source: clean(data?.utm_source, 300),
     utm_medium: clean(data?.utm_medium, 300),
     utm_campaign: clean(data?.utm_campaign, 500)
@@ -63,10 +68,14 @@ export async function onRequestPost(context) {
     }
 
     attributionPayload.crm_status = upstream.status;
+
     context.waitUntil(
       fetch(ATTRIBUTION_URL, {
         method: 'POST',
-        headers: {'Content-Type':'application/json','Accept':'application/json'},
+        headers: {
+          'Content-Type':'application/json',
+          'Accept':'application/json'
+        },
         body: JSON.stringify(attributionPayload)
       }).catch(() => {})
     );
@@ -75,7 +84,9 @@ export async function onRequestPost(context) {
   } catch (error) {
     return json({
       ok: false,
-      error: error?.name === 'AbortError' ? 'Tempo limite ao enviar o lead' : 'Não foi possível enviar o lead ao CRM'
+      error: error?.name === 'AbortError'
+        ? 'Tempo limite ao enviar o lead'
+        : 'Não foi possível enviar o lead ao CRM'
     }, 502);
   } finally {
     clearTimeout(timeout);
@@ -83,6 +94,8 @@ export async function onRequestPost(context) {
 }
 
 export function onRequest(context) {
-  if (context.request.method !== 'POST') return json({ ok: false, error: 'Método não permitido' }, 405);
+  if (context.request.method !== 'POST') {
+    return json({ ok: false, error: 'Método não permitido' }, 405);
+  }
   return onRequestPost(context);
 }
