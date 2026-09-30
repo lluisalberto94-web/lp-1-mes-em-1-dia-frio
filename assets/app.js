@@ -92,6 +92,20 @@
     if (event.key === 'Escape' && modal && modal.getAttribute('aria-hidden') === 'false') closeModal();
   });
 
+  var playTestimonialButton = document.querySelector('[data-play-testimonial]');
+  var testimonialVideo = document.querySelector('[data-testimonial-video]');
+  if (playTestimonialButton && testimonialVideo) {
+    playTestimonialButton.addEventListener('click', function () {
+      var poster = testimonialVideo.getAttribute('data-poster');
+      if (poster && !testimonialVideo.getAttribute('poster')) {
+        testimonialVideo.setAttribute('poster', poster);
+        testimonialVideo.removeAttribute('data-poster');
+      }
+      testimonialVideo.play().catch(function(){});
+      testimonialVideo.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  }
+
   var testimonialVideoTracked = false;
   document.addEventListener('play', function (event) {
     if (!testimonialVideoTracked && event.target && event.target.matches && event.target.matches('[data-testimonial-video]')) {
