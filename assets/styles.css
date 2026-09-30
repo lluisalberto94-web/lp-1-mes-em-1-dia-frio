@@ -314,3 +314,28 @@ h3{font-size:clamp(1.25rem,2.8vw,1.85rem)}
     max-width:none;
   }
 }
+
+
+/* hero-centered-copy-v1 */
+.hero-copy{
+  text-align:center;
+}
+.event-chip{
+  justify-content:center;
+}
+.hero-pill-row{
+  justify-content:center;
+}
+.hero-cta{
+  display:flex;
+  justify-content:center;
+}
+.hero-meta{
+  justify-content:center;
+  text-align:center;
+}
+.hero-sub,
+.hero-punch{
+  margin-left:auto;
+  margin-right:auto;
+}
