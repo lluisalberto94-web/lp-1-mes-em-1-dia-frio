@@ -1,0 +1,30 @@
+name: Build uploaded hero asset
+
+on:
+  push:
+    paths:
+      - 'assets/.hero-upload-part-05'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-hero:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Decode uploaded hero
+        shell: bash
+        run: |
+          cat assets/.hero-upload-part-* | base64 -d > assets/lauro-renata-hero-upload.webp
+          test -s assets/lauro-renata-hero-upload.webp
+      - name: Commit asset
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f assets/.hero-upload-part-*
+          git add -A assets/
+          git commit -m "asset: add uploaded hero image" || exit 0
+          git push
