@@ -1606,3 +1606,20 @@ h3{font-size:clamp(1.25rem,2.8vw,1.85rem)}
     padding:0 18px 18px 61px;
   }
 }
+
+
+/* faq-location-order-v1 */
+.faq-only{
+  background:#f6f1e8;
+}
+.location-only{
+  background:
+    radial-gradient(circle at 12% 6%,rgba(188,145,51,.10),transparent 22%),
+    #eee6da;
+}
+.faq-only .faq-pro{
+  margin-top:0;
+}
+.location-only .venue-head{
+  margin-top:0;
+}
