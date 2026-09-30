@@ -63,13 +63,22 @@
     }
   }
 
-  function scrollToOffer() {
-    var offer = document.getElementById('oferta');
-    if (!offer) return;
+  function scrollToExperience() {
+    var experience = document.getElementById('experiencia');
+    if (!experience) return;
     var header = document.querySelector('.site-header');
     var offset = (header ? header.offsetHeight : 0) + 12;
-    var target = offer.getBoundingClientRect().top + window.scrollY - offset;
+    var target = experience.getBoundingClientRect().top + window.scrollY - offset;
     window.scrollTo({ top: target, behavior: 'smooth' });
+  }
+
+  function openModal() {
+    if (!modal) return;
+    modal.setAttribute('aria-hidden','false');
+    document.body.classList.add('modal-open');
+    clarityEvent('form_open');
+    var first = modal.querySelector('input[name="nome"]');
+    setTimeout(function(){ if (first) first.focus(); }, 50);
   }
 
   function closeModal() {
@@ -79,12 +88,20 @@
   }
 
   document.addEventListener('click', function (event) {
-    var offerButton = event.target.closest('[data-scroll-offer]');
-    if (offerButton) {
+    var experienceButton = event.target.closest('[data-scroll-experience]');
+    if (experienceButton) {
       clarityEvent('cta_click');
-      scrollToOffer();
+      scrollToExperience();
       return;
     }
+
+    var formButton = event.target.closest('[data-open-form]');
+    if (formButton) {
+      clarityEvent('cta_click');
+      openModal();
+      return;
+    }
+
     if (event.target.closest('[data-close-form]')) closeModal();
   });
 
