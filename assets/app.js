@@ -336,6 +336,18 @@
   initProofCarousel();
 
   var utms = readUtms();
+
+  document.querySelectorAll('a[data-eduzz-checkout]').forEach(function(link){
+    try {
+      var checkout = new URL(link.href, window.location.href);
+      UTM_KEYS.forEach(function(key){
+        var value = utms[key] || '';
+        if (value) checkout.searchParams.set(key, value);
+      });
+      link.href = checkout.toString();
+    } catch (_) {}
+  });
+
   document.querySelectorAll('[data-lead-form]').forEach(function(form){
     bindForm(form, utms);
   });
