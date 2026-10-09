@@ -1909,7 +1909,7 @@ h3{font-size:clamp(1.25rem,2.8vw,1.85rem)}
 /* Destaque discreto para os três pilares da primeira dobra. */
 .hero .hero-emphasis{
   color:#fff1cc;
-  font-weight:850;
+  font-weight:400;
   text-decoration:underline;
   text-decoration-color:rgba(240,200,98,.62);
   text-decoration-thickness:1px;
