@@ -1906,6 +1906,15 @@ h3{font-size:clamp(1.25rem,2.8vw,1.85rem)}
   letter-spacing:-.04em;
 }
 .hero-title-next{line-height:1.15}
+/* Destaque discreto para os três pilares da primeira dobra. */
+.hero .hero-emphasis{
+  color:#fff1cc;
+  font-weight:850;
+  text-decoration:underline;
+  text-decoration-color:rgba(240,200,98,.62);
+  text-decoration-thickness:1px;
+  text-underline-offset:.13em;
+}
 .hero .hero-focus{
   color:#fff8e8;
   font-weight:900;
