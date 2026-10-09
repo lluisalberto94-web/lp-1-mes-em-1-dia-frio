@@ -1885,3 +1885,78 @@ h3{font-size:clamp(1.25rem,2.8vw,1.85rem)}
     font-size:20px;
   }
 }
+
+
+/* copy-layout-minimal-2026-10-09 */
+/* A primeira frase é uma linha própria; o segundo bloco quebra naturalmente nas telas menores. */
+.hero .hero-title{
+  max-width:960px;
+  margin-left:auto;
+  margin-right:auto;
+  font-size:clamp(2.25rem,4.35vw,4.05rem);
+  line-height:1.1;
+  letter-spacing:-.043em;
+}
+.hero-title-opening,
+.hero-title-next{display:block}
+.hero-title-opening{margin-bottom:.13em}
+
+/* Dobra da constância: só tipografia e um detalhe discreto. */
+.constancy-minimal{padding-top:clamp(74px,9vw,112px);padding-bottom:clamp(74px,9vw,112px)}
+.constancy-minimal .section-head{max-width:980px;margin:0 auto;text-align:center}
+.constancy-minimal h2{font-size:clamp(2rem,4.6vw,3.5rem);line-height:1.12;letter-spacing:-.03em}
+.constancy-minimal .statement{max-width:690px;margin:24px auto 0;font-size:clamp(1.08rem,2vw,1.35rem);line-height:1.55;font-weight:500}
+.constancy-rule{width:68px;height:2px;margin:0 auto 28px;background:linear-gradient(90deg,transparent,#c69b46,transparent)}
+
+/* Transição direta do método para o conteúdo da imersão. */
+.method-transition{padding-bottom:20px}
+.method-transition .method-intro-clean .method-name{font-size:clamp(2.6rem,7vw,5.5rem);margin:28px auto 0}
+.method-transition + .days{padding-top:34px}
+
+/* Conteúdos dos dias 1 e 2: uma coluna, rótulos e descrições alinhados ao título. */
+.experience-day .experience-list{
+  columns:initial;
+  column-count:1;
+  display:flex;
+  flex-direction:column;
+  gap:0;
+  width:100%;
+  padding:0;
+  margin:12px 0 0;
+}
+.experience-day .experience-list li{
+  break-inside:auto;
+  display:block;
+  padding:15px 0 16px;
+  margin:0;
+  border-bottom:1px solid rgba(17,16,13,.12);
+  text-align:left;
+}
+.experience-day .experience-list li:first-child{border-top:1px solid rgba(17,16,13,.12)}
+.experience-day .experience-list li::before{content:none;display:none}
+.experience-day .experience-topic-title{
+  display:block;
+  font-weight:850;
+  font-size:clamp(1.02rem,1.65vw,1.15rem);
+  line-height:1.35;
+  color:#30251a;
+  margin-bottom:5px;
+}
+.experience-day .experience-topic-detail{
+  display:block;
+  font-size:clamp(.94rem,1.4vw,1.02rem);
+  line-height:1.52;
+  font-weight:400;
+  color:#62594f;
+}
+.experience-day-dark .experience-list li,
+.experience-day-dark .experience-list li:first-child{border-color:rgba(255,255,255,.13)}
+.experience-day-dark .experience-topic-title{color:#f5ebd8}
+.experience-day-dark .experience-topic-detail{color:#c7beae}
+@media(max-width:680px){
+  .hero .hero-title{font-size:clamp(2.05rem,8.5vw,2.85rem)}
+  .constancy-minimal{padding-top:66px;padding-bottom:66px}
+  .method-transition{padding-bottom:12px}
+  .method-transition + .days{padding-top:24px}
+  .experience-day .experience-list li{padding:14px 0}
+}
