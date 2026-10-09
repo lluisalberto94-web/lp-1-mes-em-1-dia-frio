@@ -1893,13 +1893,21 @@ h3{font-size:clamp(1.25rem,2.8vw,1.85rem)}
   max-width:960px;
   margin-left:auto;
   margin-right:auto;
-  font-size:clamp(2.25rem,4.35vw,4.05rem);
-  line-height:1.1;
+  font-size:clamp(1.95rem,3.65vw,3.35rem);
+  line-height:1.13;
   letter-spacing:-.043em;
 }
 .hero-title-opening,
 .hero-title-next{display:block}
 .hero-title-opening{margin-bottom:.13em}
+.hero .hero-punch{
+  max-width:750px;
+  margin:0 auto 24px;
+  font-size:clamp(1.05rem,1.65vw,1.28rem);
+  font-weight:400;
+  line-height:1.56;
+  letter-spacing:0;
+}
 
 /* Dobra da constância: só tipografia e um detalhe discreto. */
 .constancy-minimal{padding-top:clamp(74px,9vw,112px);padding-bottom:clamp(74px,9vw,112px)}
@@ -1954,7 +1962,7 @@ h3{font-size:clamp(1.25rem,2.8vw,1.85rem)}
 .experience-day-dark .experience-topic-title{color:#f5ebd8}
 .experience-day-dark .experience-topic-detail{color:#c7beae}
 @media(max-width:680px){
-  .hero .hero-title{font-size:clamp(2.05rem,8.5vw,2.85rem)}
+  .hero .hero-title{font-size:clamp(1.78rem,7.2vw,2.38rem)}
   .constancy-minimal{padding-top:66px;padding-bottom:66px}
   .method-transition{padding-bottom:12px}
   .method-transition + .days{padding-top:24px}
