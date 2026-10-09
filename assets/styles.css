@@ -1906,10 +1906,11 @@ h3{font-size:clamp(1.25rem,2.8vw,1.85rem)}
   letter-spacing:-.04em;
 }
 .hero-title-next{line-height:1.15}
+.hero-title-keywords{display:block;white-space:nowrap}
 /* Destaque discreto para os três pilares da primeira dobra. */
 .hero .hero-emphasis{
   color:#fff1cc;
-  font-weight:400;
+  font-weight:850;
   text-decoration:underline;
   text-decoration-color:rgba(240,200,98,.62);
   text-decoration-thickness:1px;
@@ -1998,3 +1999,6 @@ h3{font-size:clamp(1.25rem,2.8vw,1.85rem)}
   .hero .hero-title{font-size:clamp(1.45rem,4.35vw,1.8rem)}
   .hero .hero-title-opening{font-size:clamp(1.72rem,5.55vw,2.1rem);white-space:normal}
 }
+
+/* Mantém a terceira linha inteira também nas telas de celular. */
+@media(max-width:600px){.hero .hero-title-next{font-size:clamp(1.05rem,4.45vw,1.7rem)}}
