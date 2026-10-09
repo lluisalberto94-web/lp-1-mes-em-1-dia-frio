@@ -1893,15 +1893,15 @@ h3{font-size:clamp(1.25rem,2.8vw,1.85rem)}
   max-width:960px;
   margin-left:auto;
   margin-right:auto;
-  font-size:clamp(1.95rem,3.65vw,3.35rem);
-  line-height:1.13;
+  font-size:clamp(1.55rem,3.1vw,2.78rem);
+  line-height:1.17;
   letter-spacing:-.043em;
 }
 .hero-title-opening,
 .hero-title-next{display:block}
 .hero-title-opening{
   margin-bottom:.16em;
-  font-size:clamp(1.55rem,3.2vw,2.65rem);
+  font-size:clamp(2rem,4vw,3.35rem);
   white-space:nowrap;
   letter-spacing:-.04em;
 }
@@ -1976,10 +1976,16 @@ h3{font-size:clamp(1.25rem,2.8vw,1.85rem)}
 .experience-day-dark .experience-topic-title{color:#f5ebd8}
 .experience-day-dark .experience-topic-detail{color:#c7beae}
 @media(max-width:680px){
-  .hero .hero-title{font-size:clamp(1.78rem,7.2vw,2.38rem)}
-  .hero .hero-title-opening{font-size:clamp(.92rem,4.25vw,1.65rem);letter-spacing:-.04em}
+  .hero .hero-title{font-size:clamp(1.55rem,3.1vw,2.78rem)}
+  .hero .hero-title-opening{font-size:clamp(2rem,4vw,3.35rem);letter-spacing:-.04em}
   .constancy-minimal{padding-top:66px;padding-bottom:66px}
   .method-transition{padding-bottom:12px}
   .method-transition + .days{padding-top:24px}
   .experience-day .experience-list li{padding:14px 0}
+}
+
+/* Em telas estreitas, preserva a hierarquia sem cortar as palavras. */
+@media(max-width:600px){
+  .hero .hero-title{font-size:clamp(1.45rem,4.35vw,1.8rem)}
+  .hero .hero-title-opening{font-size:clamp(1.72rem,5.55vw,2.1rem);white-space:normal}
 }
