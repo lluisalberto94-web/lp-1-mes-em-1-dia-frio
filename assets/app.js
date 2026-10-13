@@ -346,6 +346,14 @@
       });
       link.href = checkout.toString();
     } catch (_) {}
+
+    link.addEventListener('click', function(){
+      var ingresso = link.getAttribute('aria-label') === 'Garantir ingresso individual' ? 'individual' : 'casal_socio';
+      clarityEvent('checkout_click_' + ingresso);
+      if (typeof window.fbq === 'function') {
+        window.fbq('trackCustom','CheckoutClick',{ ingresso: ingresso });
+      }
+    });
   });
 
   document.querySelectorAll('[data-lead-form]').forEach(function(form){
