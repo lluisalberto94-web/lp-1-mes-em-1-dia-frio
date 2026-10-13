@@ -2195,24 +2195,13 @@ h3{font-size:clamp(1.25rem,2.8vw,1.85rem)}
 }
 
 
-/* mobile-benefit-labels-v3 */
-.mobile-word{
-  display:none;
-}
-.desktop-word{
-  display:inline;
+/* mobile-benefit-labels-v4 */
+/* Uma única palavra no HTML: lowercase no desktop, capitalizada no mobile. */
+.hero-title-keyword-item .hero-emphasis{
+  text-transform:lowercase;
 }
 @media(max-width:680px){
-  .desktop-word{
-    display:none;
-  }
-  .mobile-word{
-    display:inline;
-  }
-  .hero-title-keyword-item{
-    gap:10px;
-  }
-  .mobile-check{
-    order:0;
+  .hero-title-keyword-item .hero-emphasis{
+    text-transform:none;
   }
 }
