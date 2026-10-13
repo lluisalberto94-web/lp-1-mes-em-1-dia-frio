@@ -2004,20 +2004,43 @@ h3{font-size:clamp(1.25rem,2.8vw,1.85rem)}
 @media(max-width:600px){.hero .hero-title-next{font-size:clamp(1.05rem,4.45vw,1.7rem)}}
 
 
-/* mid-page-cta-v1 */
-.mid-page-cta{
-  padding:34px 0 18px;
-  background:#0a0a0a;
+/* experience-cta-and-checkout-pulse-v2 */
+.experience-cta{
+  margin-top:34px;
 }
-.mid-page-cta .button{
+.experience-cta .button{
   min-width:300px;
 }
-@media(max-width:680px){
-  .mid-page-cta{
-    padding:28px 0 12px;
+
+.checkout-btn{
+  animation:checkoutPulse 2.6s ease-in-out infinite;
+}
+.checkout-btn:hover{
+  animation-play-state:paused;
+  transform:translateY(-2px);
+}
+@keyframes checkoutPulse{
+  0%,100%{
+    transform:scale(1);
+    box-shadow:0 12px 34px rgba(16,185,22,.25);
   }
-  .mid-page-cta .button{
+  50%{
+    transform:scale(1.015);
+    box-shadow:0 15px 42px rgba(16,185,22,.36);
+  }
+}
+
+@media(max-width:680px){
+  .experience-cta{
+    margin-top:28px;
+  }
+  .experience-cta .button{
     width:100%;
     min-width:0;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .checkout-btn{
+    animation:none;
   }
 }
