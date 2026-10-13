@@ -9,11 +9,28 @@
     var meta = document.querySelector('meta[name="clarity-project-id"]');
     var projectId = meta ? String(meta.content || '').trim() : '';
     if (!projectId) return;
-    (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window,document,'clarity','script',projectId);
+
+    window.clarity = window.clarity || function(){
+      (window.clarity.q = window.clarity.q || []).push(arguments);
+    };
+
+    var loaded = false;
+    function injectClarity() {
+      if (loaded) return;
+      loaded = true;
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.clarity.ms/tag/' + projectId;
+      var first = document.getElementsByTagName('script')[0];
+      first.parentNode.insertBefore(script, first);
+    }
+
+    ['pointerdown','touchstart','keydown','scroll'].forEach(function(evt){
+      window.addEventListener(evt, injectClarity, { once: true, passive: true });
+    });
+    window.addEventListener('load', function(){
+      setTimeout(injectClarity, 4500);
+    }, { once: true });
   }
 
   function clarityEvent(name) {
@@ -56,10 +73,36 @@
             observer.unobserve(entry.target);
           }
         });
-      }, { rootMargin: '600px 0px' });
+      }, { rootMargin: '250px 0px' });
       videos.forEach(function(video){ observer.observe(video); });
     } else {
       videos.forEach(loadPoster);
+    }
+  }
+
+  function loadDeferredIframes() {
+    var frames = Array.prototype.slice.call(document.querySelectorAll('iframe[data-deferred-src]'));
+    if (!frames.length) return;
+
+    function hydrate(frame) {
+      var src = frame.getAttribute('data-deferred-src');
+      if (!src || frame.getAttribute('src')) return;
+      frame.setAttribute('src', src);
+      frame.removeAttribute('data-deferred-src');
+    }
+
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (entry.isIntersecting) {
+            hydrate(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: '500px 0px' });
+      frames.forEach(function(frame){ observer.observe(frame); });
+    } else {
+      frames.forEach(hydrate);
     }
   }
 
@@ -118,6 +161,15 @@
         testimonialVideo.setAttribute('poster', poster);
         testimonialVideo.removeAttribute('data-poster');
       }
+      var sources = testimonialVideo.querySelectorAll('source[data-src]');
+      Array.prototype.forEach.call(sources, function(source){
+        var src = source.getAttribute('data-src');
+        if (src && !source.getAttribute('src')) {
+          source.setAttribute('src', src);
+          source.removeAttribute('data-src');
+        }
+      });
+      if (sources.length) testimonialVideo.load();
       testimonialVideo.play().catch(function(){});
       testimonialVideo.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
@@ -333,7 +385,22 @@
 
   loadClarity();
   loadDeferredPosters();
-  initProofCarousel();
+  loadDeferredIframes();
+
+  var proofCarousel = document.getElementById('proofCarousel');
+  if (proofCarousel && 'IntersectionObserver' in window) {
+    var proofObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          proofObserver.disconnect();
+          initProofCarousel();
+        }
+      });
+    }, { rootMargin: '500px 0px' });
+    proofObserver.observe(proofCarousel);
+  } else {
+    initProofCarousel();
+  }
 
   var utms = readUtms();
 
