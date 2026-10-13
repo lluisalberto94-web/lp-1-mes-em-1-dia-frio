@@ -2547,3 +2547,34 @@ h3{font-size:clamp(1.25rem,2.8vw,1.85rem)}
     line-height:1.45;
   }
 }
+
+
+/* performance-v8 */
+/* Evita gastar layout/paint com as dobras que ainda estão longe da viewport. */
+main > section:not(.hero),
+.checkout-section{
+  content-visibility:auto;
+  contain-intrinsic-size:auto 820px;
+}
+
+/* O carrossel só recebe trabalho de composição quando for inicializado perto da viewport. */
+.proof-track{
+  will-change:auto;
+}
+
+/* Iframe do mapa permanece estável enquanto o src real ainda não foi hidratado. */
+.venue-map iframe:not([src]){
+  background:#e8e1d7;
+}
+
+/* A primeira dobra não depende da antiga mídia oculta. */
+.hero-grid{
+  grid-template-columns:1fr;
+}
+
+/* Mantém animações fora do caminho crítico em dispositivos que pedem menos movimento. */
+@media(prefers-reduced-motion:reduce){
+  .proof-track{
+    transition:none;
+  }
+}
