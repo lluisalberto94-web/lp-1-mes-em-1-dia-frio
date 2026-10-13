@@ -2193,3 +2193,26 @@ h3{font-size:clamp(1.25rem,2.8vw,1.85rem)}
     transform:translateY(-1px);
   }
 }
+
+
+/* mobile-benefit-labels-v3 */
+.mobile-word{
+  display:none;
+}
+.desktop-word{
+  display:inline;
+}
+@media(max-width:680px){
+  .desktop-word{
+    display:none;
+  }
+  .mobile-word{
+    display:inline;
+  }
+  .hero-title-keyword-item{
+    gap:10px;
+  }
+  .mobile-check{
+    order:0;
+  }
+}
