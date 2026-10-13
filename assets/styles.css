@@ -2044,3 +2044,29 @@ h3{font-size:clamp(1.25rem,2.8vw,1.85rem)}
     animation:none;
   }
 }
+
+
+/* all-cta-pulse-v3 */
+.button,
+.checkout-btn{
+  animation:ctaPulse 2.6s ease-in-out infinite;
+  transform-origin:center;
+}
+.button:hover,
+.checkout-btn:hover{
+  animation-play-state:paused;
+}
+@keyframes ctaPulse{
+  0%,100%{
+    transform:scale(1);
+  }
+  50%{
+    transform:scale(1.018);
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .button,
+  .checkout-btn{
+    animation:none;
+  }
+}
