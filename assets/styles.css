@@ -2205,3 +2205,66 @@ h3{font-size:clamp(1.25rem,2.8vw,1.85rem)}
     text-transform:none;
   }
 }
+
+
+/* mobile-hero-align-v5 */
+@media(max-width:680px){
+  /* Data em duas linhas: chamada acima; data + local abaixo */
+  .event-chip{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    gap:4px 7px;
+    margin-bottom:26px;
+  }
+  .event-chip span{
+    flex:0 0 100%;
+    width:100%;
+    font-size:.7rem;
+    letter-spacing:.12em;
+  }
+  .event-chip strong,
+  .event-chip em{
+    flex:0 0 auto;
+  }
+  .event-chip strong{
+    font-size:.7rem;
+    letter-spacing:.08em;
+  }
+  .event-chip em{
+    font-size:.68rem;
+    letter-spacing:.08em;
+  }
+  .event-chip em::before{
+    content:"•";
+    margin-right:7px;
+    color:#7f7a72;
+  }
+
+  /* Benefícios: bloco centralizado, linhas alinhadas pelo mesmo eixo */
+  .hero-title-keywords{
+    display:grid;
+    width:max-content;
+    max-width:100%;
+    margin:0 auto;
+    justify-items:start;
+    gap:8px;
+    text-align:left;
+  }
+  .hero-title-keyword-item{
+    display:grid;
+    grid-template-columns:34px auto;
+    align-items:center;
+    justify-content:start;
+    gap:10px;
+    width:100%;
+    font-size:2.08rem;
+    line-height:1.03;
+  }
+  .mobile-check{
+    width:34px;
+    text-align:center;
+    font-size:.8em;
+  }
+}
