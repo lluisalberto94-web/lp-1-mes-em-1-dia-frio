@@ -2127,3 +2127,69 @@ h3{font-size:clamp(1.25rem,2.8vw,1.85rem)}
     line-height:1.45;
   }
 }
+
+
+/* mobile-hero-benefits-v2 */
+.mobile-check{
+  display:none;
+}
+.desktop-sep{
+  display:inline;
+}
+.hero-title-keyword-item{
+  display:inline;
+}
+
+@media(max-width:680px){
+  .hero .hero-title-opening{
+    font-size:2.68rem;
+    line-height:.98;
+    margin-bottom:.3em;
+  }
+
+  .hero .hero-title-next{
+    font-size:1.9rem;
+    line-height:1.04;
+  }
+
+  .hero-title-lead{
+    display:block;
+    margin-bottom:14px;
+  }
+  .hero-title-lead::after{
+    content:":";
+  }
+
+  .hero-title-keywords{
+    display:grid;
+    justify-items:center;
+    gap:7px;
+    white-space:normal;
+  }
+
+  .hero-title-keyword-item{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+    font-size:2.08rem;
+    line-height:1.03;
+  }
+
+  .hero .hero-emphasis{
+    text-decoration:none;
+  }
+
+  .desktop-sep{
+    display:none;
+  }
+
+  .mobile-check{
+    display:inline-block;
+    color:#2fd07d;
+    font-size:.78em;
+    font-weight:950;
+    line-height:1;
+    transform:translateY(-1px);
+  }
+}
