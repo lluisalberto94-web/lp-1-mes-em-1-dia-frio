@@ -1,4 +1,4 @@
-const CRM_WEBHOOK_URL = 'https://wh.upviewcrm.com/api/webhooks/inbound/lead/freire-educacao/lp-imersao-luis';
+const CRM_WEBHOOK_URL = 'https://wh.upviewcrm.com/api/webhooks/inbound/lead/freire-educacao/lp-imersao-frio';
 const ATTRIBUTION_URL = 'https://xtiagbrqakritwkpplyz.supabase.co/functions/v1/capture-lp-attribution-frio';
 const PAGE_KEY = '1mes1dia_frio';
 
