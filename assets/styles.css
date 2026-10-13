@@ -2002,3 +2002,22 @@ h3{font-size:clamp(1.25rem,2.8vw,1.85rem)}
 
 /* Mantém a terceira linha inteira também nas telas de celular. */
 @media(max-width:600px){.hero .hero-title-next{font-size:clamp(1.05rem,4.45vw,1.7rem)}}
+
+
+/* mid-page-cta-v1 */
+.mid-page-cta{
+  padding:34px 0 18px;
+  background:#0a0a0a;
+}
+.mid-page-cta .button{
+  min-width:300px;
+}
+@media(max-width:680px){
+  .mid-page-cta{
+    padding:28px 0 12px;
+  }
+  .mid-page-cta .button{
+    width:100%;
+    min-width:0;
+  }
+}
