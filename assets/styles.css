@@ -2070,3 +2070,60 @@ h3{font-size:clamp(1.25rem,2.8vw,1.85rem)}
     animation:none;
   }
 }
+
+
+/* mobile-hero-simplify-v1 */
+@media(max-width:680px){
+  .hero{
+    min-height:auto;
+    padding:34px 0 44px;
+  }
+
+  .hero-media{
+    display:none;
+  }
+
+  .event-chip{
+    justify-content:center;
+    gap:5px 9px;
+    margin-bottom:24px;
+    font-size:.64rem;
+    letter-spacing:.075em;
+  }
+  .event-chip span{
+    font-size:.66rem;
+  }
+  .event-chip strong{
+    font-size:.72rem;
+  }
+  .event-chip em{
+    font-size:.68rem;
+  }
+
+  .hero .hero-title{
+    max-width:100%;
+    margin-bottom:20px;
+    font-size:1.78rem;
+    line-height:1.1;
+  }
+  .hero .hero-title-opening{
+    font-size:2.45rem;
+    line-height:1.02;
+    margin-bottom:.22em;
+    white-space:normal;
+  }
+  .hero .hero-title-next{
+    font-size:1.72rem;
+    line-height:1.08;
+  }
+  .hero-title-keywords{
+    white-space:normal;
+  }
+
+  .hero .hero-punch{
+    max-width:94%;
+    margin-bottom:22px;
+    font-size:1.02rem;
+    line-height:1.45;
+  }
+}
