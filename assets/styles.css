@@ -2361,3 +2361,189 @@ h3{font-size:clamp(1.25rem,2.8vw,1.85rem)}
     line-height:1.5;
   }
 }
+
+
+/* desktop-hero-parity-and-green-ctas-v7 */
+/* Desktop passa a seguir a mesma lógica aprovada no mobile: big idea primeiro, sem foto na primeira dobra. */
+.hero{
+  min-height:calc(100svh - 82px);
+  padding:54px 0 66px;
+  display:flex;
+  align-items:center;
+}
+.hero-grid{
+  display:block;
+}
+.hero-copy{
+  max-width:1040px;
+  margin:0 auto;
+  text-align:center;
+}
+.hero-media{
+  display:none !important;
+}
+
+.event-chip{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  gap:5px 9px;
+  margin-bottom:30px;
+}
+.event-chip span{
+  flex:0 0 100%;
+  width:100%;
+  font-size:.76rem;
+  letter-spacing:.13em;
+}
+.event-chip strong{
+  font-size:.8rem;
+  letter-spacing:.08em;
+}
+.event-chip em{
+  font-size:.78rem;
+  letter-spacing:.08em;
+}
+.event-chip em::before{
+  content:"•";
+  margin-right:9px;
+  color:#7f7a72;
+}
+
+.hero .hero-title{
+  max-width:1040px;
+  margin:0 auto 24px;
+}
+.hero .hero-title-opening{
+  font-size:clamp(3.5rem,5.2vw,5.2rem);
+  line-height:.98;
+  margin-bottom:.25em;
+  white-space:normal;
+}
+.hero .hero-title-next{
+  font-size:clamp(2rem,3vw,3rem);
+  line-height:1.04;
+}
+.hero-title-lead{
+  display:block;
+  margin-bottom:16px;
+}
+.hero-title-lead::after{
+  content:":";
+}
+
+.hero-title-keywords{
+  display:grid;
+  width:max-content;
+  max-width:100%;
+  margin:0 auto;
+  justify-items:start;
+  gap:8px;
+  text-align:left;
+  white-space:normal;
+}
+.hero-title-keyword-item{
+  display:grid;
+  grid-template-columns:38px auto;
+  align-items:center;
+  justify-content:start;
+  gap:12px;
+  width:100%;
+  font-size:clamp(2rem,2.8vw,2.7rem);
+  line-height:1.02;
+}
+.mobile-check{
+  display:inline-block;
+  width:38px;
+  color:#2fd07d;
+  text-align:center;
+  font-size:.8em;
+  font-weight:950;
+  line-height:1;
+  transform:translateY(-1px);
+}
+.desktop-sep{
+  display:none;
+}
+.hero-title-keyword-item .hero-emphasis{
+  text-transform:none;
+  text-decoration:none;
+}
+.hero .hero-punch{
+  max-width:820px;
+  margin:0 auto 26px;
+  font-size:clamp(1.05rem,1.35vw,1.25rem);
+  line-height:1.55;
+}
+
+/* Todos os CTAs principais em verde. */
+.button,
+.checkout-btn{
+  border:1px solid rgba(71,255,79,.62) !important;
+  background:linear-gradient(180deg,#13bd19,#08a70e) !important;
+  color:#fff !important;
+  box-shadow:0 12px 34px rgba(16,185,22,.25);
+}
+.button:hover,
+.checkout-btn:hover{
+  filter:brightness(1.06);
+}
+
+/* Mantém as proporções aprovadas em telas menores. */
+@media(max-width:680px){
+  .hero{
+    min-height:auto;
+    padding:34px 0 44px;
+  }
+  .event-chip{
+    margin-bottom:26px;
+    gap:4px 7px;
+  }
+  .event-chip span{
+    font-size:.7rem;
+  }
+  .event-chip strong{
+    font-size:.7rem;
+  }
+  .event-chip em{
+    font-size:.68rem;
+  }
+  .event-chip em::before{
+    margin-right:7px;
+  }
+
+  .hero .hero-title{
+    max-width:100%;
+    margin-bottom:20px;
+  }
+  .hero .hero-title-opening{
+    font-size:2.68rem;
+    line-height:.98;
+    margin-bottom:.3em;
+  }
+  .hero .hero-title-next{
+    font-size:1.9rem;
+    line-height:1.04;
+  }
+  .hero-title-lead{
+    margin-bottom:14px;
+  }
+  .hero-title-keywords{
+    gap:8px;
+  }
+  .hero-title-keyword-item{
+    grid-template-columns:34px auto;
+    gap:10px;
+    font-size:2.08rem;
+  }
+  .mobile-check{
+    width:34px;
+  }
+  .hero .hero-punch{
+    max-width:94%;
+    margin-bottom:22px;
+    font-size:1.02rem;
+    line-height:1.45;
+  }
+}
