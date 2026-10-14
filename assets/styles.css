@@ -2480,10 +2480,10 @@ h3{font-size:clamp(1.25rem,2.8vw,1.85rem)}
 /* Todos os CTAs principais em verde. */
 .button,
 .checkout-btn{
-  border:1px solid rgba(71,255,79,.62) !important;
-  background:linear-gradient(180deg,#13bd19,#08a70e) !important;
+  border:1px solid rgba(66,190,105,.58) !important;
+  background:linear-gradient(180deg,#08752a,#05551e) !important;
   color:#fff !important;
-  box-shadow:0 12px 34px rgba(16,185,22,.25);
+  box-shadow:0 12px 34px rgba(4,85,30,.28);
 }
 .button:hover,
 .checkout-btn:hover{
