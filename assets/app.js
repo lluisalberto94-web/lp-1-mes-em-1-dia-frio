@@ -107,10 +107,10 @@
   }
 
   function scrollToExperience() {
-    var experience = document.getElementById('experiencia');
+    var experience = document.getElementById('experiencia-titulo') || document.getElementById('experiencia');
     if (!experience) return;
     var header = document.querySelector('.site-header');
-    var offset = (header ? header.offsetHeight : 0) + 12;
+    var offset = (header ? header.offsetHeight : 0) + 14;
     var target = experience.getBoundingClientRect().top + window.scrollY - offset;
     window.scrollTo({ top: target, behavior: 'smooth' });
   }
