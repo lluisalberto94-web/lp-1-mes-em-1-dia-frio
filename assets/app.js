@@ -2,7 +2,7 @@
   'use strict';
 
   var UTM_KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','utm_id'];
-  var WHATSAPP_URL = 'https://api.whatsapp.com/send/?phone=5511930468463&text=Ol%C3%A1%2C%20acessei%20o%20site%20e%20tenho%20interesse%20na%20Imers%C3%A3o%201%20M%C3%AAs%20em%201%20Dia';
+  var WHATSAPP_URL = 'https://api.whatsapp.com/send/?phone=5511932284964&text=Ol%C3%A1%2C%20acessei%20o%20site%20e%20tenho%20interesse%20na%20Imers%C3%A3o%201%20M%C3%AAs%20em%201%20Dia';
   var modal = document.getElementById('lead-modal');
 
   function loadClarity() {
